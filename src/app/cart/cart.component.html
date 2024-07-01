@@ -1,0 +1,47 @@
+<app-header></app-header>
+<section class="pt-2 text-center d-flex justify-content-center align-items-start mb-4">
+    <div *ngIf="allProducts.length==0" style="height: 90vh;" class="d-flex justify-content-center align-items-center w-100 flex-column">
+        <h1>Cart is Empty :/</h1>
+    </div>
+    <div *ngIf="allProducts.length!=0" class="container w-100 mt-5">
+        <h1 class="text-dark fw-bolder mb-4">Your Cart</h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Image</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let product of allProducts; let i = index">
+                            <td>{{i+1}}</td>
+                            <td>{{product.title.slice(0,20)}}...</td>
+                            <td><img height="200px" width="200px" src="{{product.image}}" alt=""></td>
+                            <td>
+                              <div class="d-flex">
+                                <button (click)="decrementQuantity(product._id)" class="btn fw-bolder btn-light border-dark rounded-5">-</button>
+                                <h6 class="fw-bolder m-2 ">{{product.quantity}}</h6>
+                                <button (click)="incrementQuantity(product._id)" class="btn fw-bolder btn-dark rounded-5">+</button>
+                              </div>
+                            </td>
+                            <td><h5>{{product.totalPrice}}</h5></td>
+                            <td><button (click)="deleteItem(product._id)" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></td>
+                          </tr>
+                          
+                    </tbody>
+                </table>
+                <div class="float-end mt-2">
+                    <div class="fs-2 text-end">Total: <b>{{totalPrice}}</b></div>
+                    <button class="btn btn-danger" (click)="emptyCart()">Empty Cart</button>
+                    <button class="btn btn-dark ms-3">Shop More</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

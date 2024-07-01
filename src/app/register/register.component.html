@@ -1,0 +1,35 @@
+<div class="bg d-flex align-items-center justify-content-center m-5">
+    <div class="form-container p-4 pb-2 border border-primary bg-info text-dark rounded-5 w-50 text-end ">
+      <h3 class="text-start fs-2 mb-4 fw-bolder">Register</h3>
+      <form [formGroup]="registerForm">
+        <div class="mb-3 w-50 ms-auto">
+          <label for="username" class="form-label">Username</label>
+          <input name="username" formControlName="username" class="form-control" id="username" placeholder="username" required>
+        </div>
+        <div *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="mb-3 text-danger">
+          Username Invaild
+        </div>
+
+        <div class="mb-3 w-50 ms-auto">
+          <label for="email" class="form-label">Email address</label>
+          <input type="email" name="email" formControlName="email" class="form-control" id="email" placeholder="name@example.com" required>
+        </div>
+        <div *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="mb-3 text-danger">
+          Email Invaild
+        </div>
+
+        <div class="mb-3 w-50 ms-auto">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" name="password" formControlName="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <div *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="mb-3 text-danger">
+          Password Invaild
+        </div>
+
+        <div class="bg-light w-25 ms-auto rounded-2 text-dark">
+            <button (click)="register()" type="submit" class="btn btn-outline-dark fw-bolder w-100">Register</button>
+        </div>
+        <p class="mt-3">Already Reigstered?<a href="login" class="text-decoration-none text-danger ms-2 fw-bolder">Login Now!</a></p>
+      </form>
+    </div>
+  </div>

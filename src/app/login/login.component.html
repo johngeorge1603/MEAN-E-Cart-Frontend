@@ -1,0 +1,27 @@
+<div class="bg d-flex align-items-center justify-content-center m-5">
+    <div class="form-container p-4 pb-2 border border-primary bg-primary text-light rounded-5 w-50 text-end ">
+      <h3 class="text-start fs-2 mb-4">Login</h3>
+      <form [formGroup]="loginForm">
+        <div class="mb-3 w-50 ms-auto">
+          <label for="email" class="form-label">Email address</label>
+          <input name="email" formControlName="email" type="email" class="form-control" id="email" placeholder="name@example.com" required>
+        </div>
+        <div *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched" class="mb-3 text-danger">
+          Username Invaild
+        </div>
+
+        <div class="mb-3 w-50 ms-auto">
+          <label for="password" class="form-label">Password</label>
+          <input name="password" formControlName="password" type="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <div *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched" class="mb-3 text-danger">
+          Username Invaild
+        </div>
+
+        <div class="bg-light w-25 ms-auto rounded-2 text-dark">
+            <button (click)="login()" type="submit" class="btn btn-outline-dark fw-bolder w-100">Login</button>
+        </div>
+        <p class="mt-3">Don't have an account?<a href="register" class="text-decoration-none text-warning ms-2 fw-bolder">Register Now!</a></p>
+      </form>
+    </div>
+  </div>

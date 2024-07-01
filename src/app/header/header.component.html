@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" routerLink="">
+        <i class="fa-solid fa-stroopwafel fa-2xl"></i>
+        <h1 class="fw-bolder fs-1 mt-2 ms-2">E-Cart</h1>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item d-flex me-5" role="search">
+              <input class="form-control rounded-pill me-2 w-100" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-warning rounded-circle" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </li>
+
+            <li  *ngIf="loginUsername" class="nav-item ms-2 mt-2 me-3">
+              <div class="d-flex align-items-center">
+                <img class="rounded-circle border me-2" height="30px" src="https://static.vecteezy.com/system/resources/thumbnails/005/129/844/small_2x/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" alt="">
+                <h5>{{loginUsername}}</h5>
+              </div>
+            </li>
+
+          <li class="nav-item ms-2">
+            <button  routerLink="wishlist" class="btn btn-outline-dark rounded-pill" type="submit">WishList <span class="badge bg-dark">{{wishlistCount}}</span></button>
+          </li>
+          <li class="nav-item ms-2">
+            <button routerLink="cart" class="btn btn-success rounded-pill me-3" type="submit">Cart <span class="badge bg-dark">{{cartCount}}</span></button>
+          </li>
+          <li class="nav-item ms-2">
+            <button *ngIf="!loginUsername" routerLink="login" class="btn btn-primary" type="submit">Login</button>
+            <button *ngIf="loginUsername" (click)="logout()" class="btn btn-danger" type="submit">Logout</button>
+          </li>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>
